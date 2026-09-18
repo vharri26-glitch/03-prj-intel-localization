@@ -1,0 +1,68 @@
+/* Hero section */
+header {
+  background-color: #001e3c;
+  color: white;
+  text-align: center;
+  padding: 80px 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Glowing light behind the content */
+header::before {
+  content: "";
+  position: absolute;
+  width: 700px;
+  height: 400px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  background:
+    radial-gradient(circle at 25% 50%,
+      rgba(0, 199, 253, 0.8),
+      transparent 45%),
+    radial-gradient(circle at 75% 50%,
+      rgba(75, 70, 255, 0.7),
+      transparent 45%);
+
+  filter: blur(55px);
+}
+
+/* Dark box containing the wording */
+header div {
+  position: relative;
+  z-index: 1;
+  max-width: 750px;
+  margin: 0 auto;
+
+  background: rgba(0, 10, 30, 0.88);
+
+  padding: 45px 55px;
+  border-radius: 6px;
+
+  box-shadow:
+    -30px 0 70px rgba(0, 199, 253, 0.25),
+    30px 0 70px rgba(79, 70, 255, 0.25);
+}
+
+/* Intel logo */
+header img {
+  width: 90px;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+/* Heading */
+header h1 {
+  font-size: 42px;
+  margin: 0 0 18px;
+}
+
+/* Description */
+header p {
+  max-width: 650px;
+  margin: 0 auto;
+  font-size: 18px;
+  line-height: 1.6;
+}
