@@ -77,6 +77,12 @@ header p {
   scroll-snap-type: x mandatory;
 }
 
+/* lets first/last cards scroll all the way to viewport center */
+.timeline-spacer {
+  flex-shrink: 0;
+  width: max(0px, calc(50vw - 235px));
+}
+
 /* Cards */
 .timeline .milestone-card {
   position: relative;
@@ -299,4 +305,279 @@ header p {
   box-shadow:
     0 0 12px rgba(0, 199, 253, 1),
     0 0 26px rgba(0, 199, 253, 0.75);
+}
+
+/* =========================
+   SUSTAINABILITY BRANCHES
+========================= */
+
+.sustainability-branches {
+  position: relative;
+  background-color: #001e3c;
+  padding: 120px 40px 80px;
+  overflow: hidden;
+}
+
+
+/* main horizontal circuit line */
+.circuit-branch-line {
+  position: absolute;
+  top: 45px;
+  left: 8%;
+  right: 8%;
+  height: 3px;
+
+  background:
+    repeating-linear-gradient(
+      to right,
+      #00c7fd 0 16px,
+      transparent 16px 26px
+    );
+
+  box-shadow:
+    0 0 8px rgba(0, 199, 253, 0.8),
+    0 0 18px rgba(0, 199, 253, 0.35);
+}
+
+
+/* each Bootstrap column */
+.branch-column {
+  position: relative;
+}
+
+
+/* vertical circuit branch */
+.branch-connector {
+  position: absolute;
+  top: -75px;
+  left: 50%;
+
+  width: 3px;
+  height: 75px;
+
+  transform: translateX(-50%);
+
+  background: #00c7fd;
+
+  box-shadow:
+    0 0 8px rgba(0, 199, 253, 0.9),
+    0 0 16px rgba(0, 199, 253, 0.4);
+}
+
+
+/* little connection node */
+.branch-connector::before {
+  content: "";
+
+  position: absolute;
+  top: -8px;
+  left: 50%;
+
+  width: 16px;
+  height: 16px;
+
+  transform: translateX(-50%);
+
+  border: 3px solid #00c7fd;
+  border-radius: 50%;
+
+  background-color: #001e3c;
+
+  box-shadow:
+    0 0 10px rgba(0, 199, 253, 0.9);
+}
+
+
+/* stagger the cards like your drawing */
+.branch-rise {
+  margin-top: 0;
+}
+
+.branch-commitment {
+  margin-top: 70px;
+}
+
+.branch-water {
+  margin-top: 140px;
+}
+
+
+/* card itself */
+.branch-card {
+  position: relative;
+
+  min-height: 320px;
+
+  padding: 35px 30px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(0, 15, 35, 0.96),
+      rgba(0, 30, 60, 0.92)
+    );
+
+  border: 1px solid rgba(0, 199, 253, 0.35);
+
+  border-radius: 10px;
+
+  color: white;
+
+  box-shadow:
+    0 0 20px rgba(0, 199, 253, 0.18),
+    0 0 45px rgba(70, 80, 255, 0.12);
+
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease,
+    box-shadow 0.4s ease;
+}
+
+
+/* hover effect for non-active cards */
+.branch-card.fade-card:not(.active):hover {
+  border-color: rgba(0, 199, 253, 0.25);
+
+  box-shadow:
+    0 0 12px rgba(0, 199, 253, 0.10);
+}
+
+
+/* icon */
+.branch-icon {
+  display: inline-block;
+
+  margin-bottom: 18px;
+
+  font-size: 36px;
+
+  color: #00c7fd;
+
+  text-shadow:
+    0 0 12px rgba(0, 199, 253, 0.7);
+}
+
+
+/* title */
+.branch-card h2 {
+  margin-bottom: 16px;
+
+  font-size: 27px;
+
+  color: white;
+}
+
+
+/* paragraph */
+.branch-card p {
+  font-size: 17px;
+
+  line-height: 1.65;
+
+  color: #d8ecf5;
+}
+
+
+/* learn more link */
+.branch-link {
+  display: inline-block;
+
+  margin-top: 12px;
+
+  padding: 10px 18px;
+
+  color: #9fe7ff;
+
+  text-decoration: none;
+
+  border: 1px solid rgba(0, 199, 253, 0.5);
+
+  border-radius: 4px;
+
+  transition:
+    background 0.3s ease,
+    color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.branch-link:hover {
+  background: #00c7fd;
+
+  color: #001e3c;
+
+  box-shadow:
+    0 0 16px rgba(0, 199, 253, 0.55);
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 767px) {
+
+  .sustainability-branches {
+    padding: 50px 20px;
+  }
+
+
+  /* remove complicated wiring on mobile */
+  .circuit-branch-line,
+  .branch-connector {
+    display: none;
+  }
+
+
+  /* stack normally */
+  .branch-rise,
+  .branch-commitment,
+  .branch-water {
+    margin-top: 0;
+  }
+
+
+  .branch-card {
+    min-height: auto;
+  }
+}
+/* inactive branch cards */
+.branch-card.fade-card {
+  border-color: rgba(0, 199, 253, 0.15);
+  box-shadow:
+    0 0 10px rgba(0, 199, 253, 0.08);
+
+  transition:
+    border-color 0.7s ease,
+    box-shadow 0.7s ease;
+}
+
+/* fade the CONTENT, not the dark box */
+.branch-card.fade-card h2,
+.branch-card.fade-card p,
+.branch-card.fade-card a,
+.branch-card.fade-card .branch-icon {
+  opacity: 0.20;
+  filter: blur(3px);
+
+  transition:
+    opacity 0.7s ease,
+    filter 0.7s ease;
+}
+
+/* active card */
+.branch-card.fade-card.active {
+  border-color: rgba(0, 199, 253, 0.8);
+
+  box-shadow:
+    0 0 25px rgba(0, 199, 253, 0.45),
+    0 0 55px rgba(70, 80, 255, 0.20);
+}
+
+/* active wording becomes clear */
+.branch-card.fade-card.active h2,
+.branch-card.fade-card.active p,
+.branch-card.fade-card.active a,
+.branch-card.fade-card.active .branch-icon {
+  opacity: 1;
+  filter: blur(0);
 }
