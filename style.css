@@ -34,21 +34,20 @@ header::before {
 }
 
 /* Dark box containing the wording */
-header div {
+header > div:not(.language-menu) {
   position: relative;
   z-index: 1;
-  max-width: 1200px;
-  width: 90%;
+  max-width: 950px;
   margin: 0 auto;
 
   background: rgba(0, 10, 30, 0.88);
 
-  padding: 70px 100px;
-  border-radius: 6px;
+  padding: 60px 70px;
+  border-radius: 8px;
 
   box-shadow:
-    -30px 0 70px rgba(0, 199, 253, 0.25),
-    30px 0 70px rgba(79, 70, 255, 0.25);
+    -35px 0 80px rgba(0, 199, 253, 0.28),
+    35px 0 80px rgba(79, 70, 255, 0.28);
 }
 
 /* Intel logo */
@@ -758,4 +757,234 @@ header p {
   .subscribe-button {
     width: 100%;
   }
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.site-footer {
+  margin-top: 60px;
+  padding: 45px 20px 35px;
+
+  text-align: center;
+
+  background: #00162d;
+  color: #d8ecf5;
+
+  border-top: 1px solid rgba(0, 199, 253, 0.25);
+
+  box-shadow:
+    0 -10px 35px rgba(0, 199, 253, 0.08);
+}
+
+.footer-logo {
+  width: 75px;
+  height: auto;
+  margin-bottom: 16px;
+}
+
+.site-footer p {
+  margin: 6px 0;
+
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.site-footer .footer-small {
+  margin-top: 15px;
+
+  font-size: 13px;
+
+  color: #8fb8ca;
+}
+
+/* =========================
+   ACCESSIBILITY / KEYBOARD
+========================= */
+
+/* visible keyboard focus */
+.milestone-card:focus-visible,
+.branch-link:focus-visible,
+.subscribe-button:focus-visible,
+.newsletter-form input:focus-visible {
+  outline: 3px solid #59e1ff;
+  outline-offset: 4px;
+}
+
+/* keyboard focus should reveal timeline details the same way hover does */
+.milestone-card:focus .card-image {
+  filter: blur(3px) brightness(0.48);
+  transform: scale(1.02);
+}
+
+.milestone-card:focus .card-overlay {
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 20, 45, 0.15),
+    rgba(0, 20, 45, 0.62),
+    rgba(0, 20, 45, 0.30)
+  );
+}
+
+.milestone-card:focus .card-overlay h2 {
+  transform: translateY(-55px);
+}
+
+.milestone-card:focus .card-details {
+  opacity: 1;
+  max-height: 300px;
+  transform: translateY(-30px);
+}
+
+/* =========================
+   RTL SUPPORT
+========================= */
+
+html[dir="rtl"] body {
+  direction: rtl;
+  text-align: right;
+}
+
+html[dir="rtl"] .timeline {
+  direction: rtl;
+}
+
+html[dir="rtl"] .card-overlay,
+html[dir="rtl"] .card-details {
+  text-align: center;
+}
+
+html[dir="rtl"] .branch-card {
+  text-align: right;
+}
+
+html[dir="rtl"] .newsletter-form {
+  direction: rtl;
+}
+
+html[dir="rtl"] .site-footer {
+  text-align: center;
+}
+
+/* =========================
+   LANGUAGE SELECTOR
+========================= */
+
+.language-menu {
+  position: absolute;
+  top: 24px;
+  right: 28px;
+  z-index: 20;
+}
+
+.language-button {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  padding: 10px 14px;
+
+  background: #00162d;
+  color: white;
+
+  border: 1px solid #00c7fd;
+  border-radius: 7px;
+
+  font-size: 15px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 0 12px rgba(0, 199, 253, 0.55),
+    0 0 24px rgba(0, 199, 253, 0.25);
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.language-button:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 0 18px rgba(0, 199, 253, 0.85),
+    0 0 34px rgba(75, 70, 255, 0.35);
+}
+
+.language-icon {
+  font-size: 19px;
+}
+
+.language-code {
+  font-size: 14px;
+  letter-spacing: 0.6px;
+}
+
+.language-arrow {
+  font-size: 13px;
+  opacity: 0.8;
+}
+
+/* dropdown */
+.language-dropdown {
+  display: none;
+
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+
+  min-width: 130px;
+
+  background: #00162d;
+
+  border: 1px solid rgba(0, 199, 253, 0.35);
+  border-radius: 6px;
+
+  overflow: hidden;
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.35),
+    0 0 18px rgba(0, 199, 253, 0.18);
+}
+
+.language-dropdown.show {
+  display: block;
+}
+
+.language-dropdown button {
+  width: 100%;
+
+  padding: 10px 12px;
+
+  background: transparent;
+  color: white;
+
+  border: none;
+
+  text-align: left;
+
+  font-size: 14px;
+
+  cursor: pointer;
+}
+
+.language-dropdown button:hover {
+  background: rgba(0, 199, 253, 0.14);
+}
+
+/* Arabic placement */
+html[dir="rtl"] .language-menu {
+  right: auto;
+  left: 28px;
+}
+
+html[dir="rtl"] .language-dropdown {
+  right: auto;
+  left: 0;
+}
+
+html[dir="rtl"] .language-dropdown button {
+  text-align: right;
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -21,6 +21,30 @@
 
   <!-- Header / Hero Section -->
   <header>
+    <div class="language-menu">
+      <button
+        class="language-button"
+        id="languageButton"
+        type="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <span class="language-icon" id="languageIcon">🌐</span>
+        <span class="language-code" id="languageCode">ENG</span>
+        <span class="language-arrow">⌄</span>
+      </button>
+
+      <div class="language-dropdown" id="languageDropdown">
+        <button type="button" data-lang="en" data-code="ENG" data-flag="🇺🇸">
+          English
+        </button>
+
+        <button type="button" data-lang="ar" data-code="AR" data-flag="🇸🇦">
+          العربية
+        </button>
+      </div>
+    </div>
+
     <div>
       <img src="img/intel-header-logo.svg" alt="Intel Logo" />
       <!-- Main Heading -->
@@ -40,7 +64,7 @@
   <!-- Timeline Cards Section -->
   <section class="timeline">
     <!-- 1968 -->
-    <div class="milestone-card">
+    <div class="milestone-card" tabindex="0">
       <img src="img/intel 1968.png" alt="Intel founding milestone in 1968" class="card-image" style="object-position: top right;">
 
       <div class="card-overlay">
@@ -59,7 +83,7 @@
 
 
     <!-- 1971 -->
-    <div class="milestone-card">
+    <div class="milestone-card" tabindex="0">
       <img src="img/Intel 1971.png" alt="Intel first microprocessor milestone" class="card-image">
 
       <div class="card-overlay">
@@ -78,7 +102,7 @@
 
 
     <!-- 1978 -->
-    <div class="milestone-card">
+    <div class="milestone-card" tabindex="0">
       <img src="img/Intel 1978.png" alt="Intel 8086 processor milestone in 1978" class="card-image">
 
       <div class="card-overlay">
@@ -96,7 +120,7 @@
 
 
     <!-- 1985 -->
-    <div class="milestone-card">
+    <div class="milestone-card" tabindex="0">
       <img src="img/intel 1985.png" alt="Intel 386 processor milestone" class="card-image">
 
       <div class="card-overlay">
@@ -115,7 +139,7 @@
 
 
     <!-- 2006 -->
-    <div class="milestone-card">
+    <div class="milestone-card" tabindex="0">
       <img src="img/intel 2006.png" alt="Intel environmental impact milestone in 2006" class="card-image">
 
       <div class="card-overlay">
@@ -135,7 +159,7 @@
 
 
     <!-- 2020 -->
-    <div class="milestone-card" id="year-2020">
+    <div class="milestone-card" id="year-2020" tabindex="0">
       <img src="img/intel 2020.png" alt="Intel RISE sustainability strategy in 2020" class="card-image">
 
       <div class="card-overlay">
@@ -154,7 +178,7 @@
 
 
     <!-- 2022 -->
-    <div class="milestone-card" id="year-2022">
+    <div class="milestone-card" id="year-2022" tabindex="0">
       <img src="img/intel 2022.png" alt="Intel net-zero commitment in 2022" class="card-image">
 
       <div class="card-overlay">
@@ -173,7 +197,7 @@
 
 
     <!-- 2023 -->
-    <div class="milestone-card">
+    <div class="milestone-card" tabindex="0">
       <img src="img/intel 2023.png" alt="Intel renewable electricity milestone in 2023" class="card-image">
 
       <div class="card-overlay">
@@ -192,7 +216,7 @@
 
 
     <!-- 2024 -->
-    <div class="milestone-card" id="year-2024">
+    <div class="milestone-card" id="year-2024" tabindex="0">
       <img src="img/intel 2024.png" alt="Intel Sustainability Summit in 2024" class="card-image">
 
       <div class="card-overlay">
@@ -305,6 +329,22 @@
     </form>
   </section>
 
+  <footer class="site-footer">
+    <img
+      src="img/intel-header-logo.svg"
+      alt="Intel"
+      class="footer-logo"
+    >
+
+    <p>
+      Building a more sustainable future through innovation.
+    </p>
+
+    <p class="footer-small">
+      Intel Sustainability Timeline
+    </p>
+  </footer>
+
   <script>
     const connections = [
       {
@@ -372,6 +412,97 @@
     timeline.addEventListener("mouseleave", () => {
       scrollDirection = 0;
       cancelAnimationFrame(animationFrame);
+    });
+  </script>
+
+  <script>
+    const languageButton = document.getElementById("languageButton");
+    const languageDropdown = document.getElementById("languageDropdown");
+    const languageIcon = document.getElementById("languageIcon");
+    const languageCode = document.getElementById("languageCode");
+
+    languageButton.addEventListener("click", () => {
+      const isOpen = languageDropdown.classList.toggle("show");
+      languageButton.setAttribute("aria-expanded", isOpen);
+    });
+
+    languageDropdown.querySelectorAll("button").forEach(option => {
+      option.addEventListener("click", () => {
+        const lang = option.dataset.lang;
+        const code = option.dataset.code;
+        const flag = option.dataset.flag;
+
+        languageCode.textContent = code;
+        languageIcon.textContent = flag;
+
+        if (lang === "ar") {
+        document.documentElement.lang = "ar";
+        document.documentElement.dir = "rtl";
+
+        document.querySelector("header h1").textContent =
+          "الاستدامة عبر العصور";
+
+        document.querySelector("header p").textContent =
+          "استكشف رحلة إنتل عبر الزمن واكتشف كيف ساهم التزامنا بالابتكار في بناء مستقبل أكثر استدامة للتكنولوجيا وكوكبنا.";
+
+        document.querySelector(".branch-rise h2").textContent =
+          "استراتيجية RISE";
+
+        document.querySelector(".branch-commitment h2").textContent =
+          "الالتزام";
+
+        document.querySelector(".branch-water h2").textContent =
+          "المياه والنفايات";
+
+        document.querySelector(".newsletter-section h2").textContent =
+          "اشترك في نشرتنا الإخبارية";
+
+        document.querySelector(".subscribe-button").textContent =
+          "اشترك";
+
+        document.querySelectorAll(".branch-link").forEach(link => {
+          link.textContent = "اعرف المزيد";
+        });
+        } else {
+        document.documentElement.lang = "en";
+        document.documentElement.dir = "ltr";
+
+        document.querySelector("header h1").textContent =
+          "Sustainability Through the Ages";
+
+        document.querySelector("header p").textContent =
+          "Explore Intel's journey through time, discovering how our commitment to innovation has shaped a more sustainable future for technology and our planet.";
+
+        document.querySelector(".branch-rise h2").textContent =
+          "RISE Strategy";
+
+        document.querySelector(".branch-commitment h2").textContent =
+          "Commitment";
+
+        document.querySelector(".branch-water h2").textContent =
+          "Water & Waste";
+
+        document.querySelector(".newsletter-section h2").textContent =
+          "Subscribe to our Newsletter";
+
+        document.querySelector(".subscribe-button").textContent =
+          "Subscribe";
+
+        document.querySelectorAll(".branch-link").forEach(link => {
+          link.textContent = "Learn More";
+        });
+        }
+
+        languageDropdown.classList.remove("show");
+        languageButton.setAttribute("aria-expanded", "false");
+      });
+    });
+
+    document.addEventListener("click", (event) => {
+      if (!event.target.closest(".language-menu")) {
+        languageDropdown.classList.remove("show");
+        languageButton.setAttribute("aria-expanded", "false");
+      }
     });
   </script>
 </body>
