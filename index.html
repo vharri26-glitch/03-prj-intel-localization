@@ -332,5 +332,47 @@
       });
     });
   </script>
+
+  <script>
+    const timeline = document.querySelector(".timeline");
+
+    let scrollDirection = 0;
+    let animationFrame;
+
+    function autoScroll() {
+      if (scrollDirection !== 0) {
+        timeline.scrollLeft += scrollDirection;
+        animationFrame = requestAnimationFrame(autoScroll);
+      }
+    }
+
+    timeline.addEventListener("mousemove", (event) => {
+      const rect = timeline.getBoundingClientRect();
+      const mouseX = event.clientX;
+      const edgeZone = 140;
+
+      if (mouseX > rect.right - edgeZone) {
+        if (scrollDirection !== 3) {
+          scrollDirection = 3;
+          cancelAnimationFrame(animationFrame);
+          autoScroll();
+        }
+      } else if (mouseX < rect.left + edgeZone) {
+        if (scrollDirection !== -3) {
+          scrollDirection = -3;
+          cancelAnimationFrame(animationFrame);
+          autoScroll();
+        }
+      } else {
+        scrollDirection = 0;
+        cancelAnimationFrame(animationFrame);
+      }
+    });
+
+    timeline.addEventListener("mouseleave", () => {
+      scrollDirection = 0;
+      cancelAnimationFrame(animationFrame);
+    });
+  </script>
 </body>
 </html>

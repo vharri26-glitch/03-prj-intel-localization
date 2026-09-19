@@ -74,12 +74,18 @@ header p {
 
 /* Timeline */
 .timeline {
+  position: relative;
   display: flex;
   gap: 50px;
   overflow-x: auto;
   padding: 60px 40px 80px;
   background-color: #001e3c;
   scroll-snap-type: x mandatory;
+  cursor: grab;
+}
+
+.timeline:hover {
+  cursor: ew-resize;
 }
 
 /* Cards */
