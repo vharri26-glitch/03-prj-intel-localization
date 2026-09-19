@@ -250,7 +250,10 @@
 
           <h2>RISE Strategy</h2>
 
-          <p>
+          <p
+            data-en="Under its RISE (Responsible, Inclusive, Sustainable, Enabling) strategy, Intel sets ambitious 2030 goals, including driving industry-wide progress on climate action, water stewardship, and waste reduction."
+            data-ar="ضمن استراتيجية RISE، تضع إنتل أهدافًا طموحة لعام 2030 تشمل دفع التقدم في العمل المناخي، وإدارة المياه، وتقليل النفايات."
+          >
             Under its RISE (Responsible, Inclusive, Sustainable, Enabling)
             strategy, Intel sets ambitious 2030 goals, including driving
             industry-wide progress on climate action, water stewardship,
@@ -271,7 +274,10 @@
 
           <h2>Commitment</h2>
 
-          <p>
+          <p
+            data-en="In 2022, Intel pledged to achieve net-zero greenhouse gas emissions by 2040. This commitment builds on decades of environmental initiatives and partnerships across the semiconductor industry."
+            data-ar="في عام 2022، تعهدت إنتل بتحقيق صافي انبعاثات صفرية للغازات الدفيئة بحلول عام 2040، استنادًا إلى عقود من المبادرات البيئية والشراكات في صناعة أشباه الموصلات."
+          >
             In 2022, Intel pledged to achieve net-zero greenhouse gas
             emissions by 2040. This commitment builds on decades of
             environmental initiatives and partnerships across the
@@ -292,7 +298,10 @@
 
           <h2>Water &amp; Waste</h2>
 
-          <p>
+          <p
+            data-en="Intel conserves billions of gallons of water annually and collaborates with local communities to restore watersheds. Intel also upcycles and recycles materials to reduce waste and advance a circular economy."
+            data-ar="توفر إنتل مليارات الجالونات من المياه سنويًا وتتعاون مع المجتمعات المحلية لاستعادة مستجمعات المياه، كما تعيد استخدام المواد وتدويرها لتقليل النفايات ودعم الاقتصاد الدائري."
+          >
             Intel conserves billions of gallons of water annually and
             collaborates with local communities to restore watersheds.
             Intel also upcycles and recycles materials to reduce waste
@@ -492,6 +501,10 @@
           link.textContent = "Learn More";
         });
         }
+
+        document.querySelectorAll("[data-en][data-ar]").forEach(element => {
+          element.textContent = element.dataset[lang];
+        });
 
         languageDropdown.classList.remove("show");
         languageButton.setAttribute("aria-expanded", "false");
