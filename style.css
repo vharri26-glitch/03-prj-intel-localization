@@ -1085,3 +1085,228 @@ html[dir="rtl"] .language-dropdown {
 html[dir="rtl"] .language-dropdown button {
   text-align: right;
 }
+
+/* =========================
+   MOBILE / RESPONSIVE
+========================= */
+
+@media (max-width: 767px) {
+  /* PAGE */
+  body {
+    overflow-x: hidden;
+  }
+
+  /* HERO */
+  header {
+    padding: 80px 16px 70px;
+  }
+
+  header > div:not(.language-menu) {
+    max-width: 100%;
+    padding: 40px 24px;
+  }
+
+  header h1 {
+    font-size: 36px;
+    line-height: 1.15;
+  }
+
+  header p {
+    font-size: 17px;
+    line-height: 1.6;
+  }
+
+  header img {
+    width: 90px;
+  }
+
+  /* fade hero side photos more on small screens */
+  .hero-left,
+  .hero-right {
+    width: 50%;
+    opacity: 0.06;
+  }
+
+  /* LANGUAGE BUTTON */
+  .language-menu {
+    top: 14px;
+    left: 14px;
+    right: auto;
+  }
+
+  .language-button {
+    padding: 8px 10px;
+    font-size: 13px;
+  }
+
+  .language-icon {
+    font-size: 16px;
+  }
+
+  /* TIMELINE BECOMES VERTICAL */
+  .timeline {
+    flex-direction: column;
+    overflow-x: hidden;
+    gap: 38px;
+
+    padding: 40px 18px 55px;
+
+    scroll-snap-type: none;
+  }
+
+  .timeline .milestone-card {
+    width: 100%;
+    min-width: 0;
+    height: 480px;
+
+    scroll-snap-align: none;
+  }
+
+  /* show timeline details automatically on mobile */
+  .milestone-card .card-image {
+    filter: blur(2px) brightness(0.5);
+    transform: scale(1.02);
+  }
+
+  .milestone-card .card-overlay {
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 20, 45, 0.18),
+      rgba(0, 20, 45, 0.62),
+      rgba(0, 20, 45, 0.32)
+    );
+  }
+
+  .milestone-card .card-overlay h2 {
+    font-size: 48px;
+    transform: translateY(-45px);
+  }
+
+  .milestone-card .card-details {
+    opacity: 1;
+    max-height: 320px;
+    transform: translateY(-25px);
+  }
+
+  .milestone-card .card-details h3 {
+    font-size: 24px;
+  }
+
+  .milestone-card .card-details p {
+    font-size: 17px;
+    line-height: 1.55;
+    max-width: 300px;
+  }
+
+  /* hide desktop circuit scrollbar on mobile */
+  .timeline::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* SUSTAINABILITY BRANCH SECTION */
+  .sustainability-branches {
+    padding: 50px 18px;
+  }
+
+  .circuit-branch-line,
+  .branch-connector {
+    display: none;
+  }
+
+  .branch-rise,
+  .branch-commitment,
+  .branch-water {
+    margin-top: 0;
+  }
+
+  .branch-card {
+    min-height: auto;
+    padding: 28px 24px;
+  }
+
+  .branch-card h2 {
+    font-size: 24px;
+  }
+
+  .branch-card p {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  .branch-link {
+    font-size: 15px;
+    padding: 10px 18px;
+  }
+
+  /* NEWSLETTER */
+  .newsletter-section {
+    margin: 40px 16px 30px;
+    padding: 28px 20px;
+  }
+
+  .newsletter-section h2 {
+    font-size: 24px;
+  }
+
+  .newsletter-form {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .newsletter-form input,
+  .subscribe-button {
+    width: 100%;
+  }
+
+  /* FOOTER */
+  .site-footer {
+    margin-top: 40px;
+    padding: 35px 18px 28px;
+  }
+
+  .footer-logo {
+    width: 65px;
+  }
+
+  /* RTL MOBILE */
+  html[dir="rtl"] .branch-card {
+    text-align: right;
+  }
+
+  html[dir="rtl"] .newsletter-form {
+    flex-direction: column;
+  }
+}
+
+.timeline::-webkit-scrollbar-thumb {
+  min-width: 110px;
+
+  background: linear-gradient(
+    to right,
+    #59e1ff 0%,
+    #00c7fd 30%,
+    #0068b5 65%,
+    #4b46ff 100%
+  );
+
+  border: 3px solid #001e3c;
+  border-radius: 5px;
+
+  box-shadow:
+    0 0 10px rgba(0, 199, 253, 0.8),
+    0 0 20px rgba(75, 70, 255, 0.35);
+}
+
+.timeline::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    to right,
+    #8decff 0%,
+    #00c7fd 30%,
+    #008cff 65%,
+    #706cff 100%
+  );
+
+  box-shadow:
+    0 0 14px rgba(0, 199, 253, 1),
+    0 0 28px rgba(75, 70, 255, 0.6);
+}
