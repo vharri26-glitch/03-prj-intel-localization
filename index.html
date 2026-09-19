@@ -39,12 +39,9 @@
 
   <!-- Timeline Cards Section -->
   <section class="timeline">
-    <!-- lets edge cards scroll to viewport center -->
-    <div class="timeline-spacer" aria-hidden="true"></div>
-
     <!-- 1968 -->
     <div class="milestone-card">
-      <img src="img/intel 1968.png" alt="Intel founding milestone in 1968" class="card-image">
+      <img src="img/intel 1968.png" alt="Intel founding milestone in 1968" class="card-image" style="object-position: top right;">
 
       <div class="card-overlay">
         <h2>1968</h2>
@@ -211,9 +208,6 @@
         </div>
       </div>
     </div>
-
-    <!-- lets edge cards scroll to viewport center -->
-    <div class="timeline-spacer" aria-hidden="true"></div>
   </section>
 
   <!-- Sustainability Branches Section -->
@@ -290,14 +284,28 @@
   </section>
 
   <!-- Subscription Form -->
-  <section>
+  <section class="newsletter-section">
     <h2>Subscribe to our Newsletter</h2>
-    <!-- Add form here -->
+
+    <form class="newsletter-form">
+      <label for="newsletter-email" class="visually-hidden">
+        Email address
+      </label>
+
+      <input
+        type="email"
+        id="newsletter-email"
+        placeholder="Enter your email"
+        required
+      >
+
+      <button type="submit" class="subscribe-button">
+        Subscribe
+      </button>
+    </form>
   </section>
 
   <script>
-    const timeline = document.querySelector(".timeline");
-
     const connections = [
       {
         year: document.querySelector("#year-2020"),
@@ -313,28 +321,16 @@
       }
     ];
 
-    function updateBranches() {
-      const timelineRect = timeline.getBoundingClientRect();
-      const center = timelineRect.left + timelineRect.width / 2;
-
-      connections.forEach(({ year, card }) => {
-        const rect = year.getBoundingClientRect();
-        const yearCenter = rect.left + rect.width / 2;
-
-        const distance = Math.abs(yearCenter - center);
-
-        if (distance < 300) {
-          card.classList.add("active");
-        } else {
-          card.classList.remove("active");
-        }
+    connections.forEach(({ year, card }) => {
+      year.addEventListener("mouseenter", () => {
+        card.classList.add("active");
       });
-    }
 
-    timeline.addEventListener("scroll", updateBranches);
-    window.addEventListener("resize", updateBranches);
-
-    updateBranches();
+      // accessibility fallback: clicking a branch box lights it up directly
+      card.addEventListener("click", () => {
+        card.classList.add("active");
+      });
+    });
   </script>
 </body>
 </html>
